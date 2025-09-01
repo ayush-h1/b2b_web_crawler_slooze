@@ -1,0 +1,34 @@
+categories:
+  - slug: industrial-machinery
+    indiamart:
+      search_queries:
+        - "industrial machinery"
+        - "cnc machine"
+        - "conveyor"
+      category_urls: []    # disabled, 404
+    alibaba:
+      showroom_urls:
+        - "https://www.alibaba.com/showroom/industrial-machinery.html"
+
+  - slug: electronics-machinery
+    indiamart:
+      search_queries:
+        - "smt machine"
+        - "pcb printer"
+        - "pick and place machine"
+      category_urls: []    # disabled, 404
+    alibaba:
+      showroom_urls:
+        - "https://www.alibaba.com/showroom/electronic-products-machinery.html"
+
+  - slug: textiles-apparel-machinery
+    indiamart:
+      search_queries:
+        - "textile machine"
+        - "power loom"
+        - "knitting machine"
+      category_urls: []    # disabled, 404
+    alibaba:
+      showroom_urls:
+        - "https://www.alibaba.com/showroom/apparel-textile-machinery.html"
+
