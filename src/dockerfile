@@ -1,0 +1,22 @@
+FROM python:3.11-slim
+
+# system libs (safe for lxml/matplotlib)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential libxml2-dev libxslt1-dev libfreetype6 libpng16-16 libjpeg62-turbo \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY . /app
+
+RUN pip install --no-cache-dir --upgrade pip \
+ && pip install --no-cache-dir --only-binary=:all: -r requirements-linux.txt
+
+# make default dirs (Render disk mounts at /var/data)
+RUN mkdir -p /var/data/raw /var/data/clean /var/data/eda /app/artifacts/eda
+
+ENV DATA_DIR=/var/data
+ENV ART_DIR=/app/artifacts/eda
+ENV PYTHONUNBUFFERED=1
+
+# Render provides $PORT; FastAPI docs at /docs will be our healthcheck
+CMD ["bash", "-lc", "uvicorn src.api:app --host 0.0.0.0 --port ${PORT:-10000}"]
